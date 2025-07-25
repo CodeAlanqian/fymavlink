@@ -1,7 +1,7 @@
 #pragma once
 // MESSAGE PARAM_REQUEST_LIST PACKING
 
-#define MAVLINK_MSG_ID_PARAM_REQUEST_LIST 21
+#define MAVLINK_MSG_ID_PARAM_REQUEST_LIST 228
 
 
 typedef struct __mavlink_param_request_list_t {
@@ -11,17 +11,17 @@ typedef struct __mavlink_param_request_list_t {
 
 #define MAVLINK_MSG_ID_PARAM_REQUEST_LIST_LEN 2
 #define MAVLINK_MSG_ID_PARAM_REQUEST_LIST_MIN_LEN 2
-#define MAVLINK_MSG_ID_21_LEN 2
-#define MAVLINK_MSG_ID_21_MIN_LEN 2
+#define MAVLINK_MSG_ID_228_LEN 2
+#define MAVLINK_MSG_ID_228_MIN_LEN 2
 
 #define MAVLINK_MSG_ID_PARAM_REQUEST_LIST_CRC 159
-#define MAVLINK_MSG_ID_21_CRC 159
+#define MAVLINK_MSG_ID_228_CRC 159
 
 
 
 #if MAVLINK_COMMAND_24BIT
 #define MAVLINK_MESSAGE_INFO_PARAM_REQUEST_LIST { \
-    21, \
+    228, \
     "PARAM_REQUEST_LIST", \
     2, \
     {  { "target_system", NULL, MAVLINK_TYPE_UINT8_T, 0, 0, offsetof(mavlink_param_request_list_t, target_system) }, \
@@ -220,7 +220,7 @@ static inline void mavlink_msg_param_request_list_send_struct(mavlink_channel_t 
 
 #if MAVLINK_MSG_ID_PARAM_REQUEST_LIST_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This variant of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by reusing
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an

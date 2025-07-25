@@ -1,7 +1,7 @@
 #pragma once
 // MESSAGE PARAM_SET PACKING
 
-#define MAVLINK_MSG_ID_PARAM_SET 23
+#define MAVLINK_MSG_ID_PARAM_SET 236
 
 
 typedef struct __mavlink_param_set_t {
@@ -14,17 +14,17 @@ typedef struct __mavlink_param_set_t {
 
 #define MAVLINK_MSG_ID_PARAM_SET_LEN 23
 #define MAVLINK_MSG_ID_PARAM_SET_MIN_LEN 23
-#define MAVLINK_MSG_ID_23_LEN 23
-#define MAVLINK_MSG_ID_23_MIN_LEN 23
+#define MAVLINK_MSG_ID_236_LEN 23
+#define MAVLINK_MSG_ID_236_MIN_LEN 23
 
 #define MAVLINK_MSG_ID_PARAM_SET_CRC 168
-#define MAVLINK_MSG_ID_23_CRC 168
+#define MAVLINK_MSG_ID_236_CRC 168
 
 #define MAVLINK_MSG_PARAM_SET_FIELD_PARAM_ID_LEN 16
 
 #if MAVLINK_COMMAND_24BIT
 #define MAVLINK_MESSAGE_INFO_PARAM_SET { \
-    23, \
+    236, \
     "PARAM_SET", \
     5, \
     {  { "target_system", NULL, MAVLINK_TYPE_UINT8_T, 0, 4, offsetof(mavlink_param_set_t, target_system) }, \
@@ -77,7 +77,7 @@ static inline uint16_t mavlink_msg_param_set_pack(uint8_t system_id, uint8_t com
     packet.target_system = target_system;
     packet.target_component = target_component;
     packet.param_type = param_type;
-    mav_array_memcpy(packet.param_id, param_id, sizeof(char)*16);
+    mav_array_assign_char(packet.param_id, param_id, 16);
         memcpy(_MAV_PAYLOAD_NON_CONST(msg), &packet, MAVLINK_MSG_ID_PARAM_SET_LEN);
 #endif
 
@@ -159,7 +159,7 @@ static inline uint16_t mavlink_msg_param_set_pack_chan(uint8_t system_id, uint8_
     packet.target_system = target_system;
     packet.target_component = target_component;
     packet.param_type = param_type;
-    mav_array_memcpy(packet.param_id, param_id, sizeof(char)*16);
+    mav_array_assign_char(packet.param_id, param_id, 16);
         memcpy(_MAV_PAYLOAD_NON_CONST(msg), &packet, MAVLINK_MSG_ID_PARAM_SET_LEN);
 #endif
 
@@ -236,7 +236,7 @@ static inline void mavlink_msg_param_set_send(mavlink_channel_t chan, uint8_t ta
     packet.target_system = target_system;
     packet.target_component = target_component;
     packet.param_type = param_type;
-    mav_array_memcpy(packet.param_id, param_id, sizeof(char)*16);
+    mav_array_assign_char(packet.param_id, param_id, 16);
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PARAM_SET, (const char *)&packet, MAVLINK_MSG_ID_PARAM_SET_MIN_LEN, MAVLINK_MSG_ID_PARAM_SET_LEN, MAVLINK_MSG_ID_PARAM_SET_CRC);
 #endif
 }
@@ -257,7 +257,7 @@ static inline void mavlink_msg_param_set_send_struct(mavlink_channel_t chan, con
 
 #if MAVLINK_MSG_ID_PARAM_SET_LEN <= MAVLINK_MAX_PAYLOAD_LEN
 /*
-  This variant of _send() can be used to save stack space by re-using
+  This variant of _send() can be used to save stack space by reusing
   memory from the receive buffer.  The caller provides a
   mavlink_message_t which is the size of a full mavlink message. This
   is usually the receive buffer for the channel, and allows a reply to an
@@ -279,7 +279,7 @@ static inline void mavlink_msg_param_set_send_buf(mavlink_message_t *msgbuf, mav
     packet->target_system = target_system;
     packet->target_component = target_component;
     packet->param_type = param_type;
-    mav_array_memcpy(packet->param_id, param_id, sizeof(char)*16);
+    mav_array_assign_char(packet->param_id, param_id, 16);
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PARAM_SET, (const char *)packet, MAVLINK_MSG_ID_PARAM_SET_MIN_LEN, MAVLINK_MSG_ID_PARAM_SET_LEN, MAVLINK_MSG_ID_PARAM_SET_CRC);
 #endif
 }
